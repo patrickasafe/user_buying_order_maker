@@ -16,11 +16,11 @@ import Image from "next/image";
 
 // import logo from "../../public/logo-frexco-slogan-HDP-300x77-1.png";
 import { useRouter } from "next/router";
-import { Page } from "../Layout/utils/interfaces";
+import { Page } from "./utils/interfaces";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 //TODO: this AppBar is omits it's elements when browser have low width. Need to make them keep showing, maybe breaking a line?
-const ResponsiveAppBar = ({ menuPages }: { menuPages: Page[] }) => {
+const ButtonAppBar = ({ menuPages }: { menuPages: Page[] }) => {
   const router = useRouter();
 
   const [actualPage, setActualPage] = React.useState("Home");
@@ -175,4 +175,4 @@ const ResponsiveAppBar = ({ menuPages }: { menuPages: Page[] }) => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default ButtonAppBar;

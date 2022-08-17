@@ -1,5 +1,5 @@
 import ButtonAppBar from "../ButtonAppBar";
-import { Page } from "./utils/interfaces";
+import { Page } from "../ButtonAppBar/utils/interfaces";
 
 
 export const Layout = ({ children, pages }: { children: any; pages: Page[]}) => {
