@@ -68,7 +68,7 @@ const ButtonAppBar = ({ menuPages }: { menuPages: Page[] }) => {
 
           {/* <Image src={logo} alt="logo" width="148 px" height="48 px" /> */}
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -109,7 +109,7 @@ const ButtonAppBar = ({ menuPages }: { menuPages: Page[] }) => {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
