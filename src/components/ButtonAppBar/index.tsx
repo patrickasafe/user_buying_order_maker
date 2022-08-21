@@ -23,7 +23,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const ButtonAppBar = ({ menuPages }: { menuPages: Page[] }) => {
   const router = useRouter();
 
-  const [actualPage, setActualPage] = React.useState("Home");
+  // const [actualPage, setActualPage] = React.useState("Home");
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -68,7 +68,7 @@ const ButtonAppBar = ({ menuPages }: { menuPages: Page[] }) => {
 
           {/* <Image src={logo} alt="logo" width="148 px" height="48 px" /> */}
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: "flex" }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -94,7 +94,7 @@ const ButtonAppBar = ({ menuPages }: { menuPages: Page[] }) => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: "block", md: "none" },
+                display: "block",
               }}
             >
               {menuPages.map((menuPage: Page) => (

@@ -66,6 +66,8 @@ The Layout must have:
 
 The Layout could have:
 
+- **[ ]** a menu button calling options for navegation
+
 - **[ ]** after login different buttons like: my orders
 
 ---
