@@ -2,7 +2,7 @@ import ButtonAppBar from "../ButtonAppBar";
 import { Page } from "../ButtonAppBar/utils/interfaces";
 
 
-export const Layout = ({ children, pages }: { children: any; pages: Page[]}) => {
+const Layout = ({ children, pages }: { children: any; pages: Page[]}) => {
   return (
     <>
       <ButtonAppBar menuPages={pages} />
@@ -10,3 +10,4 @@ export const Layout = ({ children, pages }: { children: any; pages: Page[]}) => 
     </>
   );
 };
+export default Layout

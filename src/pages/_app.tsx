@@ -1,8 +1,11 @@
-import '../styles/globals.css'
+import 'styles/globals.css'
 import type { AppProps } from 'next/app'
 
-import { Layout } from '../components/Layout';
-import { pages } from '../components/Layout/utils/configs';
+import Layout from 'components/Layout';
+import { QueryClientProvider } from 'react-query';
+
+import { queryClient } from 'libs/react-query/queryClient';
+import { pages } from 'components/Layout/utils/configs';
 
 //font importing
 import '@fontsource/roboto/300.css';
@@ -13,9 +16,11 @@ import '@fontsource/roboto/700.css';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Layout pages={pages}>
-        <Component {...pageProps} />
-      </Layout>
+      <QueryClientProvider client={queryClient}>
+        <Layout pages={pages}>
+          <Component {...pageProps} />
+        </Layout>
+      </QueryClientProvider>
     </>
   );
 }
