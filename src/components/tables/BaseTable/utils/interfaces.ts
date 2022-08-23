@@ -16,18 +16,7 @@ export type FormAttributeWithStates = FormAttribute & {
   setState: Dispatch<SetStateAction<string>> | Dispatch<SetStateAction<number>>;
 }
 
-export interface BaseTableProps {
-  numSelected: number;
-  onRequestSort: (
-    event: React.MouseEvent<unknown>,
-    property: keyof Product
-  ) => void;
-  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  order: Order;
-  orderBy: string;
-  rowCount: number;
-  headCells: HeadCell[];
-}
+
 
 export interface BaseTableToolbarProps {
   numSelected: number;
@@ -63,6 +52,28 @@ export interface InventoryItem {
   id: number
   name: string
   ref: string
+}
+
+
+//Props
+export type BaseTableHeadProps = {
+  numSelected: number;
+  onRequestSort: (
+    event: React.MouseEvent<unknown>,
+    property: keyof Product
+  ) => void;
+  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  order: Order;
+  orderBy: string;
+  rowCount: number;
+  headCells: HeadCell[];
+}
+
+export type BaseTableProps = {
+  title: string;
+  data: Product[];
+  setData: React.Dispatch<React.SetStateAction<Product[]>>;
+  headCells: HeadCell[]
 }
 
 

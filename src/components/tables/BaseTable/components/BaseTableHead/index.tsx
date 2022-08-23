@@ -6,12 +6,12 @@ import {
   TableRow,
   TableSortLabel,
 } from "@mui/material";
-import { Product, BaseTableProps, HeadCell } from "components/tables/BaseTable/utils/interfaces";
+import { Product, BaseTableHeadProps } from "components/tables/BaseTable/utils/interfaces";
 import { visuallyHidden } from "@mui/utils";
 
 
 
-const BaseTableHead = (props: BaseTableProps) => {
+const BaseTableHead = (props: BaseTableHeadProps) => {
   const {
     onSelectAllClick,
     order,

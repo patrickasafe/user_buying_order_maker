@@ -13,7 +13,7 @@ import Switch from "@mui/material/Switch";
 import BaseTableHead from "./components/BaseTableHead";
 import BaseTableToolbar from "./components/BaseTableToolbar";
 
-import { Product, Order, HeadCell } from "./utils/interfaces";
+import { Product, Order, HeadCell, BaseTableProps } from "./utils/interfaces";
 import { getComparator, stableSort } from "./utils/comparators";
 
 const BaseTable = ({
@@ -21,12 +21,8 @@ const BaseTable = ({
   data,
   setData,
   headCells,
-}: {
-  title: string;
-  data: Product[];
-  setData: React.Dispatch<React.SetStateAction<Product[]>>;
-  headCells: readonly HeadCell[];
-}) => {
+}: BaseTableProps
+) => {
   const rows = data;
   const setRows = setData;
   const [order, setOrder] = React.useState<Order>("asc");
