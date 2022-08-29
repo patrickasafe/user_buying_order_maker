@@ -13,7 +13,15 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+
+//MSW API mock worker service
+if (process.env.NODE_ENV === "development") {
+  require("../mocks")
+}
+
+
 function MyApp({ Component, pageProps }: AppProps) {
+  
   return (
     <>
       <QueryClientProvider client={queryClient}>
