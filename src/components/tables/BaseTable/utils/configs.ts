@@ -10,13 +10,13 @@ export const productsTableHeadCells: readonly HeadCell[] = [
   {
     id: "ref",
     numeric: false,
-    disablePadding: false,
+    disablePadding: true,
     label: "Reference",
   },
   {
     id: "price",
     numeric: true,
-    disablePadding: false,
+    disablePadding: true,
     label: "Selling Price ($)",
   },
 ];

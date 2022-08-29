@@ -13,7 +13,7 @@ import Switch from "@mui/material/Switch";
 import BaseTableHead from "./components/BaseTableHead";
 import BaseTableToolbar from "./components/BaseTableToolbar";
 
-import { Product, Order, HeadCell, BaseTableProps } from "./utils/interfaces";
+import { Product, Order, BaseTableProps } from "./utils/interfaces";
 import { getComparator, stableSort } from "./utils/comparators";
 
 const BaseTable = ({
@@ -143,7 +143,8 @@ const BaseTable = ({
                       return <TableCell component="th"
                         id={labelId} //need to check this
                         scope="row"
-                        padding="none" key={`row${row.id}.${index}`} align="right">{row[headCell.id]}</TableCell>
+                        padding="none" key={`row${row.id}.${index}`} 
+                        align={headCell.numeric ? "right" : "left"}>{row[headCell.id]}</TableCell>
                     })}
                   </TableRow>
                 );

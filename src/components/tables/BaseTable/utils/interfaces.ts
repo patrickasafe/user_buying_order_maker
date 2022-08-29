@@ -73,7 +73,7 @@ export type BaseTableProps = {
   title: string;
   data: Product[];
   setData: React.Dispatch<React.SetStateAction<Product[]>>;
-  headCells: HeadCell[]
+  headCells: readonly HeadCell[]
 }
 
 
