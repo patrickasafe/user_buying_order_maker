@@ -76,8 +76,8 @@ The Layout could have:
 
 - **[✓]** Implement development environment using Docker.
 - Implement core functions:
-  - **[ ]** "Products" page table
-  - **[ ]** "My Orders" page table
+  - **[✓]** "Products" page table
+  - **[ IN PROGRESS ]** "My Orders" page table
 
 ### **IMPORTANT TO DO:**
 
