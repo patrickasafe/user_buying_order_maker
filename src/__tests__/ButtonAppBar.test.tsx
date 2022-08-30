@@ -1,7 +1,9 @@
 import React from "react";
+
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
-import ButtonAppBar from "../components/ButtonAppBar";
+
+import ButtonAppBar from "components/ButtonAppBar";
 import { Page } from "components/ButtonAppBar/utils/interfaces";
 
 const menuPages: Page[] = [
@@ -28,6 +30,7 @@ test("menu button options", () => {
   userEvent.click(menuButton);
 
   for (let menuPage of menuPages) {
+    //using getBy method for syncronous code
     expect(screen.getByText(menuPage.page)).toBeTruthy();
   }
 });
