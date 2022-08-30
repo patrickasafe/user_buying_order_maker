@@ -25,10 +25,9 @@ export interface BaseTableToolbarProps {
 
 export type Product = {
   id: number;
-  name?: string;
-  ref?: string;
-  cost?: number;
-  price?: number;
+  name: string;
+  ref: string;
+  price: number;
   supplier?: string;
 }
 
