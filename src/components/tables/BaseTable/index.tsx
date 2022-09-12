@@ -13,7 +13,7 @@ import Switch from "@mui/material/Switch";
 import BaseTableHead from "./components/BaseTableHead";
 import BaseTableToolbar from "./components/BaseTableToolbar";
 
-import { Product, Order, BaseTableProps } from "./utils/interfaces";
+import { Product, TableSortingOrder, BaseTableProps } from "./utils/interfaces";
 import { getComparator, stableSort } from "./utils/comparators";
 
 const BaseTable = ({
@@ -25,7 +25,7 @@ const BaseTable = ({
 ) => {
   const rows = data;
   const setRows = setData;
-  const [order, setOrder] = React.useState<Order>("asc");
+  const [order, setOrder] = React.useState<TableSortingOrder>("asc");
   const [orderBy, setOrderBy] = React.useState<keyof Product>("name");
   const [selected, setSelected] = React.useState<readonly string[]>([]);
   const [page, setPage] = React.useState(0);
@@ -50,12 +50,12 @@ const BaseTable = ({
     setSelected([]);
   };
 
-  const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
-    const selectedIndex = selected.indexOf(name);
+  const handleClick = (event: React.MouseEvent<unknown>, ref: string) => {
+    const selectedIndex = selected.indexOf(ref);
     let newSelected: readonly string[] = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      newSelected = newSelected.concat(selected, ref);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -115,14 +115,14 @@ const BaseTable = ({
               rows.slice().sort(getComparator(order, orderBy)) */}
             {stableSort(rows, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, index) => {
-                const isItemSelected = isSelected(row['name']);
+              .map((row: Product, index) => {
+                const isItemSelected = isSelected(row.ref);
                 const labelId = `base-table-checkbox-${index}`;
 
                 return (
                   <TableRow
                     hover
-                    onClick={(e) => handleClick(e, row['name'])}
+                    onClick={(e) => handleClick(e, row.ref)}
                     role="checkbox"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
@@ -143,7 +143,7 @@ const BaseTable = ({
                       return <TableCell component="th"
                         id={labelId} //need to check this
                         scope="row"
-                        padding="none" key={`row${row.id}.${index}`} 
+                        padding="none" key={`row${row.id}.${index}`}
                         align={headCell.numeric ? "right" : "left"}>{row[headCell.id]}</TableCell>
                     })}
                   </TableRow>

@@ -8,19 +8,18 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import Image from "next/image";
+// import AdbIcon from "@mui/icons-material/Adb";
+// import Image from "next/image";
 
 // import logo from "../../public/logo-frexco-slogan-HDP-300x77-1.png";
 import { useRouter } from "next/router";
 import { Page } from "./utils/interfaces";
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 //TODO: this AppBar is omits it's elements when browser have low width. Need to make them keep showing, maybe breaking a line?
-const ButtonAppBar = ({ menuPages }: { menuPages: Page[] }) => {
+const ButtonAppBar = ({ menuPages, settings }: { menuPages: Page[], settings: Page[] }) => {
   const router = useRouter();
 
   // const [actualPage, setActualPage] = React.useState("Home");
@@ -101,7 +100,8 @@ const ButtonAppBar = ({ menuPages }: { menuPages: Page[] }) => {
                 <MenuItem
                   key={menuPage.page}
                   onClick={() => {
-                    router.push(menuPage.link);
+                    router.push(menuPage.link)
+                    handleCloseNavMenu();
                   }}
                 >
                   <Typography textAlign="center">{menuPage.page}</Typography>
@@ -164,8 +164,12 @@ const ButtonAppBar = ({ menuPages }: { menuPages: Page[] }) => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem key={setting.page}
+                  onClick={() => {
+                    router.push(setting.link)
+                    handleCloseUserMenu();
+                  }}>
+                  <Typography textAlign="center">{setting.page}</Typography>
                 </MenuItem>
               ))}
             </Menu>

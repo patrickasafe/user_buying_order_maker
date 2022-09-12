@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { RawDateTimeString } from "./date_time";
 
 export interface FormAttribute {
   id: string;
@@ -17,12 +18,6 @@ export type FormAttributeWithStates = FormAttribute & {
 }
 
 
-
-export interface BaseTableToolbarProps {
-  numSelected: number;
-  title: string;
-}
-
 export type Product = {
   id: number;
   name: string;
@@ -31,30 +26,31 @@ export type Product = {
   supplier?: string;
 }
 
-export type Inventory = {
+
+export type TableSortingOrder = "asc" | "desc";
+
+//
+export type Order = {
   id: number;
-  name?: string;
-  ref?: string;
-  address?: number;
+  customer: number; 
+  ref: string;
+  order_date: RawDateTimeString;
+  shipment_date: RawDateTimeString;
+  products: ProductAndQuantity[];
+  total_price: number;
 }
 
-export type NewProduct = Omit<Product, 'id'>
-
-export type Order = "asc" | "desc";
-
-
-export interface Products {
-  products: Product[];
+type ProductAndQuantity = {
+  product: number;
+  quantity: number;
 }
-
-export interface InventoryItem {
-  id: number
-  name: string
-  ref: string
-}
-
 
 //Props
+export interface BaseTableToolbarProps {
+  numSelected: number;
+  title: string;
+}
+
 export type BaseTableHeadProps = {
   numSelected: number;
   onRequestSort: (
@@ -62,7 +58,7 @@ export type BaseTableHeadProps = {
     property: keyof Product
   ) => void;
   onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  order: Order;
+  order: TableSortingOrder;
   orderBy: string;
   rowCount: number;
   headCells: HeadCell[];
@@ -74,6 +70,3 @@ export type BaseTableProps = {
   setData: React.Dispatch<React.SetStateAction<Product[]>>;
   headCells: readonly HeadCell[]
 }
-
-
-export { }
