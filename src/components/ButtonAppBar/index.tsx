@@ -17,10 +17,12 @@ import MenuItem from "@mui/material/MenuItem";
 // import logo from "../../public/logo-frexco-slogan-HDP-300x77-1.png";
 import { useRouter } from "next/router";
 import { Page } from "./utils/interfaces";
+import { useSession } from "next-auth/react";
 
 //TODO: this AppBar is omits it's elements when browser have low width. Need to make them keep showing, maybe breaking a line?
 const ButtonAppBar = ({ menuPages, settings }: { menuPages: Page[], settings: Page[] }) => {
   const router = useRouter();
+  const { data: session } = useSession();
 
   // const [actualPage, setActualPage] = React.useState("Home");
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -144,7 +146,8 @@ const ButtonAppBar = ({ menuPages, settings }: { menuPages: Page[], settings: Pa
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                {/* //TODO: FIX THIS TYPESCRIPT ERROR */}
+                <Avatar alt={session ? session.user.name : "Remy Sharp"} src={session ? session.user.image : "/images/no-user-image-icon.png"} />
               </IconButton>
             </Tooltip>
             <Menu
