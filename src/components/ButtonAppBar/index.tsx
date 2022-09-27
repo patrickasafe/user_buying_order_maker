@@ -18,8 +18,8 @@ import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/router";
 import { Page } from "./utils/interfaces";
 import { useSession } from "next-auth/react";
+import { Button } from "@mui/material";
 
-//TODO: this AppBar is omits it's elements when browser have low width. Need to make them keep showing, maybe breaking a line?
 const ButtonAppBar = ({ menuPages, settings }: { menuPages: Page[], settings: Page[] }) => {
   const router = useRouter();
   const { data: session } = useSession();
@@ -143,7 +143,8 @@ const ButtonAppBar = ({ menuPages, settings }: { menuPages: Page[], settings: Pa
           </Box> */}
 
           {/* Something to add here later */}
-          <Box sx={{ flexGrow: 0 }}>
+          {/* if there's no session, so no icon */}
+         { session ? <Box >
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 {/* //TODO: FIX THIS TYPESCRIPT ERROR */}
@@ -176,7 +177,28 @@ const ButtonAppBar = ({ menuPages, settings }: { menuPages: Page[], settings: Pa
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> : null}
+          {session ? null : 
+          <div>
+            <Button
+              color="secondary"
+              variant='text'
+            >
+              Cadastrar
+            </Button>
+
+            <Button
+              color="secondary"
+              variant='text'
+              onClick={
+                () => router.push('/login')
+              }
+            >
+              Entre
+            </Button>
+          </div>
+          }
+
         </Toolbar>
       </Container>
     </AppBar>
